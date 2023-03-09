@@ -1,4 +1,4 @@
-package org.perscholas.onlinebookstore.model;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @NoArgsConstructor

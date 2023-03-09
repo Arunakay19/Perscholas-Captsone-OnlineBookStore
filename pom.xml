@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.perscholas</groupId>
-	<artifactId>onlinebookstore</artifactId>
+	<artifactId>Perscholas-Captsone-OnlineBookStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OnlineBookStore</name>
 	<description>Online Book Store Project</description>

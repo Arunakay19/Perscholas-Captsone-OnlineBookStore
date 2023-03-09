@@ -1,4 +1,4 @@
-package org.perscholas.onlinebookstore.model;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,14 +1,11 @@
 
-package org.perscholas.onlinebookstore.service;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.service;
 
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.CustomerRepoI;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.perscholas.onlinebookstore.data.CustomerRepoI;
-import org.perscholas.onlinebookstore.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @Slf4j

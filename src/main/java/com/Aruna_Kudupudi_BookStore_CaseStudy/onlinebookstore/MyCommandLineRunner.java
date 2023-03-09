@@ -1,9 +1,9 @@
-package org.perscholas.onlinebookstore;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore;
 
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.CustomerRepoI;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import org.perscholas.onlinebookstore.data.CustomerRepoI;
-import org.perscholas.onlinebookstore.model.Customer;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

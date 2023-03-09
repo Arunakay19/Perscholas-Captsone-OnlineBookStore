@@ -1,6 +1,6 @@
-package org.perscholas.onlinebookstore.data;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data;
 import jakarta.transaction.Transactional;
-import org.perscholas.onlinebookstore.model.Customer;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
