@@ -1,38 +1,43 @@
 
 package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.service;
 
-import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.CustomerRepoI;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.UserRepoI;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.User;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 @Transactional(rollbackOn = Exception.class)
-public class CustomerService {
+public class UserService {
 
-    CustomerRepoI myUserRepoI;
-//    OrderSe courseRepoI;
+    UserRepoI myUserRepoI;
 
     @Autowired
-    public CustomerService(CustomerRepoI myUserRepoI) {
+    public UserService(UserRepoI myUserRepoI) {
         this.myUserRepoI = myUserRepoI;
     }
-}
-/*
-    public Customer getCustomerById(Integer id) {
-        Optional<Customer> optional = myUserRepoI.findById(id);
-        return optional.get();
+
+
+//    public User getUserById(Integer id) {
+//        Optional<Customer> optional = myUserRepoI.findById(id);
+//        return optional.get();
+//    }
+
+    public User findByEmailAndPassword(String email, String password) {
+        Optional<User> optional = myUserRepoI.findByEmailIgnoreCaseAndPassword(email, password);
+        if(optional.isPresent()){
+            return optional.get();
+        }
+        return null;
     }
 
-    public Customer findByEmailAndPassword(String email, String password) {
-        Optional<Customer> optional = myUserRepoI.findByEmailAndPassword(email, password);
-        return optional.get();
-    }
-
-    public Customer findByEmail(String email) {
-        Optional<Customer> optional = myUserRepoI.findByEmailAllIgnoreCase(email);
+    public User findByEmail(String email) {
+        Optional<User> optional = myUserRepoI.findByEmailAllIgnoreCase(email);
         return optional.get();
     }
 
@@ -64,6 +69,5 @@ public class CustomerService {
         }
 
     }
-
-}
 */
+}

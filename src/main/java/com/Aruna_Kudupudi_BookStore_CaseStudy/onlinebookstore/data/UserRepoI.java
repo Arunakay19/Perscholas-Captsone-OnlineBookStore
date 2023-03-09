@@ -7,8 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository @Transactional(rollbackOn = Exception.class)
-public interface CustomerRepoI extends JpaRepository<User, Integer>{
+public interface UserRepoI extends JpaRepository<User, Integer>{
     Optional<User> findByEmailAllIgnoreCase(String email);
     Optional<User> findByEmailAndPassword(String email, String password);
 
+    Optional<User> findByEmailIgnoreCaseAndPassword(String email, String password);
 }

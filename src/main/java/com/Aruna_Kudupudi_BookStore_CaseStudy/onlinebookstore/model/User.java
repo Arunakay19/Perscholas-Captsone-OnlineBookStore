@@ -28,7 +28,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
     public User(String firstName, String lastName, String email, String password) {

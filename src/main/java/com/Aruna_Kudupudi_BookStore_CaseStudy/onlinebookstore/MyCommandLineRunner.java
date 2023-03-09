@@ -1,6 +1,6 @@
 package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore;
 
-import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.CustomerRepoI;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.data.UserRepoI;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.User;
@@ -16,9 +16,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
     public void init(){
         log.debug("======== My Command Line Runner =========");
     }
-    CustomerRepoI customerRepoI;
+    UserRepoI customerRepoI;
     @Autowired
-    public MyCommandLineRunner (CustomerRepoI customerRepoI) {
+    public MyCommandLineRunner (UserRepoI customerRepoI) {
         this.customerRepoI = customerRepoI;
     }
 
