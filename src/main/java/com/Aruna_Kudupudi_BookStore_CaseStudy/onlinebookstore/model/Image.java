@@ -30,7 +30,7 @@ public class Image {
     @NonNull
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "my_user_id")
-    Customer myUser;
+    User myUser;
 
     @Override
     public boolean equals(Object o) {
