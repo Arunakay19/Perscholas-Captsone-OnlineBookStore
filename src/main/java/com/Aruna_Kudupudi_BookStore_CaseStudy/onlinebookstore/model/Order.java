@@ -1,4 +1,4 @@
-package org.perscholas.onlinebookstore.model;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @Entity
@@ -31,8 +30,8 @@ public class Order {
     private LocalDate orderDate;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();

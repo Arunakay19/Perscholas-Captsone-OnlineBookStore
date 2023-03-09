@@ -1,4 +1,4 @@
-package org.perscholas.onlinebookstore;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

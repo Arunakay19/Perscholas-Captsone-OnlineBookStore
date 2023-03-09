@@ -1,4 +1,4 @@
-package org.perscholas.onlinebookstore.model;
+package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,7 +30,7 @@ public class Image {
     @NonNull
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "my_user_id")
-    Customer myUser;
+    User myUser;
 
     @Override
     public boolean equals(Object o) {
