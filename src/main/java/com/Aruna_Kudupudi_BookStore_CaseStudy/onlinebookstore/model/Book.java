@@ -27,14 +27,15 @@ public class Book {
 
     private double price;
     private String image_name;
-
+    private String authors;
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    public Book(String title, String image_name, double price) {
+    public Book(String title, String image_name, double price, String authors) {
         this.title = title;
         this.image_name = image_name;
         this.price = price;
+        this.authors = authors;
     }
     public Book(String title) {
         this.title = title;

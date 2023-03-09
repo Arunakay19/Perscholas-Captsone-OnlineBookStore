@@ -27,8 +27,9 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String logOut(){
-        return "logout";
+    public String logOut(HttpSession session){
+        session.removeAttribute("emailId"); // Remove the username from the session
+        return "login";
     }
 
     @PostMapping("/login_process")
@@ -46,4 +47,6 @@ public class UserController {
             return "login"; // Return the name of the login view with an error message
         }
     }
+
+
 }

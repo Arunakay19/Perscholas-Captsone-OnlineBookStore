@@ -35,6 +35,7 @@
 
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
+                  <th scope="col">Price</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -42,7 +43,9 @@
                 <tr th:each="book: ${books}">
                   <th scope="row" th:text="${book.id}">1</th>
                   <td th:text="${book.title}">Mark</td>
+
                   <td th:text="${book.authors}">Mark</td>
+                  <td th:text="${book.price}">10.0</td>
                   <td>
                     <a class="btn btn-secondary btn-sm" th:href="@{/order/add_order/{id}(id=${book.id})}" >Add to Cart</a>
                     <!-- <a th:href="@{/admin/deletecourse(id=${course.id})}">delete</i></a> -->
