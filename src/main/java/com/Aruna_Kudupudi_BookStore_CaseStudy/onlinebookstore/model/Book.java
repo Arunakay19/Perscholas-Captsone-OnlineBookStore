@@ -28,10 +28,6 @@ public class Book {
     private double price;
     private String image_name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = { @JoinColumn(name = "author_id") })
-    private List<Author> authors = new ArrayList<>();
-
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -42,21 +38,6 @@ public class Book {
     }
     public Book(String title) {
         this.title = title;
-    }
-
-    public void addAuthor(Author author) {
-        if (!authors.contains(author)) {
-            authors.add(author);
-            author.getBooks().add(this);
-            log.info("add author executed: "+author.getName());
-        }
-    }
-    public void removeAuthor(Author author) {
-        if (authors.contains(author)) {
-            authors.remove(author);
-            author.getBooks().remove(this);
-            log.info("remove author executed: "+author.getName());
-        }
     }
 
 }
