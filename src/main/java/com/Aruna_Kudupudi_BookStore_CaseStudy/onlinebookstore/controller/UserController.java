@@ -15,13 +15,13 @@ import org.thymeleaf.util.StringUtils;
 
 @Controller
 @Slf4j
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @GetMapping("/login")
+    @GetMapping("/user_login")
     public String login(){
         return "login";
     }
@@ -32,6 +32,15 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/user_form")
+    public String user_form(Model model) {
+        model.addAttribute("user", new User());
+        return "user_form";
+    }
+    @GetMapping("/cart")
+    public String cart() {
+        return "cart";
+    }
     @PostMapping("/login_process")
     public String loginProcess(@RequestParam String emailId, @RequestParam String password,
                                HttpSession session, Model model){

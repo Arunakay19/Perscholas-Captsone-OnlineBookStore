@@ -19,14 +19,14 @@ public class HomeController {
     @Autowired
     BookService bookService;
 
-    @GetMapping("/index")
+    @GetMapping("/")
     private String index() {
-        log.info("index");
+        log.info("Welcome Page");
         return "index";
     }
 
 
-    @GetMapping("/")
+    @GetMapping("/available_books")
     public String home(Model model, HttpSession session){
         List<Book> allBooks = bookService.getAllBooks();
         model.addAttribute("books", allBooks);
@@ -35,7 +35,7 @@ public class HomeController {
         if(emailId != null) {
             model.addAttribute("logged", true);
         }
-        return "index";
+        return "available_books";
     }
 
 }
