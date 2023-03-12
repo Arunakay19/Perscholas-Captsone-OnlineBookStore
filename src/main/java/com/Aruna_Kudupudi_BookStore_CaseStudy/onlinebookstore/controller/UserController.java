@@ -26,6 +26,10 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/admin")
+    public String admin_page() {
+        return "admin_page";
+    }
     @GetMapping("/logout")
     public String logOut(HttpSession session){
         session.removeAttribute("emailId"); // Remove the username from the session

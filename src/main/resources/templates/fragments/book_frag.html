@@ -44,6 +44,12 @@
             <a class="nav-link" th:href="@{/}">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" th:href="@{/available_books}">Available Book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/admin}">Admin</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" th:href="@{/logout}" th:if="${logged}">Log Out</a>
             <a class="nav-link" th:href="@{/user_login}" th:unless="${logged}">Login</a>
           </li>
