@@ -30,4 +30,12 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookRepoI.findAll();
     }
+
+    public void deleteBook(int id) {
+        bookRepoI.deleteById(id);
+    }
+
+    public Book save(Book b) {
+        return bookRepoI.save(b);
+    }
 }

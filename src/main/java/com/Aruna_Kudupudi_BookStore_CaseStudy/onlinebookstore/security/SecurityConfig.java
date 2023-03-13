@@ -28,17 +28,17 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        UserDetails admin = User.withUsername("admin@gmail.com")
-                .password(encoder.encode("pass"))
-                .roles("ADMIN")
-                .build();
-
-        UserDetails user = User.withUsername("user@gmail.com")
-                .password(encoder.encode("pass"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
-//        return new CustomUserDetailsService();
+//        UserDetails admin = User.withUsername("admin@gmail.com")
+//                .password(encoder.encode("pass"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        UserDetails user = User.withUsername("user@gmail.com")
+//                .password(encoder.encode("pass"))
+//                .roles("USER")
+//                .build();
+//        return new InMemoryUserDetailsManager(admin, user);
+        return new CustomUserDetailsService();
     }
 
     @Bean
