@@ -2,8 +2,8 @@
   <head>
     <meta charset="utf-8" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -12,29 +12,29 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
-      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+            integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+            crossorigin="anonymous"
     />
   </head>
 </div>
 
 <div th:fragment="nav">
   <nav
-    class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-    id="mainNav"
+          class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+          id="mainNav"
   >
     <div class="container px-4">
       <a class="navbar-brand" href="#page-top">Online Book Store</a>
       <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarResponsive"
-        aria-controls="navbarResponsive"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,16 +46,19 @@
           <li class="nav-item">
             <a class="nav-link" th:href="@{/available_books}">Available Book</a>
           </li>
+          <!--          <div sec:authorize="hasRole('ADMIN')">-->
           <li class="nav-item">
             <a class="nav-link" th:href="@{/admin}">Admin</a>
           </li>
+          <!--      </div>-->
+
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}" th:if="${logged}">Log Out</a>
-            <a class="nav-link" th:href="@{/user_login}" th:unless="${logged}">Login</a>
+            <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">Log Out</a>
+            <a class="nav-link" th:href="@{/user_login}" sec:authorize="!isAuthenticated()">Login</a>
           </li>
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" th:href="@{/admin/dashboard}">Dashboard</a>-->
-<!--          </li>-->
+          <!--          <li class="nav-item">-->
+          <!--            <a class="nav-link" th:href="@{/admin/dashboard}">Dashboard</a>-->
+          <!--          </li>-->
           <li class="nav-item">
             <a class="nav-link" th:href="@{/cart}" >Cart</a>
           </li>

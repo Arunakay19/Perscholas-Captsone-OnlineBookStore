@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,16 +22,26 @@ public class MyCommandLineRunner implements CommandLineRunner {
     UserRepoI customerRepoI;
     BookRepoI bookRepoI;
 
+    PasswordEncoder passwordEncoder;
     @Autowired
-    public MyCommandLineRunner (UserRepoI customerRepoI, BookRepoI bookRepoI) {
+    public MyCommandLineRunner (UserRepoI customerRepoI, BookRepoI bookRepoI, PasswordEncoder passwordEncoder) {
         this.customerRepoI = customerRepoI;
         this.bookRepoI = bookRepoI;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        customerRepoI.saveAndFlush( new User("aruna","kudupudi","aruna@gmail.com", "password"));
-        customerRepoI.saveAndFlush(new User("padmini","kodi","padmini@gmail.com", "password"));
+        customerRepoI.saveAndFlush(
+                new User("aruna",
+                        "kudupudi",
+                        "aruna@gmail.com",
+                        passwordEncoder.encode("pass"),
+                        "ADMIN"));
+
+        customerRepoI.saveAndFlush(new User("padmini","kodi","padmini@gmail.com",
+                passwordEncoder.encode("pass"),
+                "USER" ));
 
         Book clean_code = new Book("Clean Code: A Handbook of Agile Software Craftsmanship",
                 "clean_code.jpeg", 10.50,
