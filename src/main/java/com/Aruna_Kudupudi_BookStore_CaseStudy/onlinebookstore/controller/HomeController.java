@@ -19,12 +19,13 @@ public class HomeController {
     @Autowired
     BookService bookService;
 
-    @GetMapping("/")
+//    @GetMapping("/")
+    /*
     private String index() {
         log.info("Welcome Page");
         return "index";
     }
-
+*/
 
     @GetMapping("/available_books")
     public String home(Model model, HttpSession session){
