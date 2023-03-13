@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<div th:replace="~{fragments/book_frag.html :: head}"></div>
+
+<body id="page-top">
+<!-- Navigation-->
+<div th:replace="~{fragments/book_frag.html :: nav}"></div>
+
+
+<section id="about">
+  <div class="container px-4">
+    <div class="row gx-4 justify-content-center">
+      <div class="col-lg-8">
+        <h2>Customer Registration</h2>
+        <div classname="container my-5 p-5" style="border:1px solid black;">
+          <form class="col-md-4 offset-md-4" th:action="@{/addBook}" method="post">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" name="title">
+            </div>
+
+            <div class="mb-3">
+              <label for="authors" class="form-label">Authors (Comma separated)</label>
+              <input type="text" class="form-control" name="authors">
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="text" class="form-control" name="price">
+            </div>
+
+            <center>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer-->
+<div th:replace="~{fragments/book_frag.html :: foot}"></div>
+</body>
+</html>

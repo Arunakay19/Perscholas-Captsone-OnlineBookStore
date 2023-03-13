@@ -1,17 +1,26 @@
 package com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.controller;
 
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.Book;
 import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.model.User;
+import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.service.BookService;
 import com.Aruna_Kudupudi_BookStore_CaseStudy.onlinebookstore.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
+
+import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -21,19 +30,36 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    BookService bookService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @GetMapping("/user_login")
     public String login(){
         return "login";
     }
 
     @GetMapping("/admin")
-    public String admin_page() {
-        return "admin_page";
-    }
-    @GetMapping("/logout")
-    public String logOut(HttpSession session){
-        session.removeAttribute("emailId"); // Remove the username from the session
-        return "login";
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public String admin_page(Model model,
+                             Authentication authentication) {
+
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        List<GrantedAuthority> authorities = userDetails.getAuthorities().stream().collect(Collectors.toList());
+        if ("ADMIN".equalsIgnoreCase(authorities.get(0).toString()) ||
+                "ROLE_ADMIN".equalsIgnoreCase(authorities.get(0).toString())) {
+
+            List<User> allUsers = userService.getAllUsers();
+            List<Book> allBooks = bookService.getAllBooks();
+
+            model.addAttribute("users", allUsers);
+            model.addAttribute("books", allBooks);
+            model.addAttribute("logged", true);
+            return "admin_page";
+        }
+        return "admin_login";
     }
 
     @GetMapping("/user_form")
@@ -45,21 +71,33 @@ public class UserController {
     public String cart() {
         return "cart";
     }
-    @PostMapping("/login_process")
-    public String loginProcess(@RequestParam String emailId, @RequestParam String password,
-                               HttpSession session, Model model){
-        // validate emailId and password from database.
-        User customer = userService.findByEmailAndPassword(emailId, password);
-        if (customer != null) {
-            // Store the username in the session
-            session.setAttribute("emailId", emailId);
-            model.addAttribute("logged", true);
-            return "index"; // Redirect to the home page
-        } else {
-            model.addAttribute("error", true);
-            return "login"; // Return the name of the login view with an error message
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam int id, Model model,
+                             Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        if ("USER".equalsIgnoreCase( ((List)userDetails.getAuthorities()).get(0).toString()) ){
+            userService.deleteUser(id);
         }
+        return "redirect:/admin_page";
     }
 
+    @PostMapping("/register_user")
+    public String registerUser(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam String email,
+            @RequestParam String password
+    ) {
 
+        userService.addUser(new User(
+                firstName,
+                lastName,
+                email,
+                passwordEncoder.encode(password),
+                "USER"
+        ));
+        log.info("New user added to the store.");
+        return "redirect:/user_login";
+    }
 }

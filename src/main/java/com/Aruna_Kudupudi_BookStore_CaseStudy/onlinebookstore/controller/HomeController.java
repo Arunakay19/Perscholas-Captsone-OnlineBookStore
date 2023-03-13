@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -19,23 +20,22 @@ public class HomeController {
     @Autowired
     BookService bookService;
 
-//    @GetMapping("/")
-    /*
-    private String index() {
+    @GetMapping("/")
+    private String index(Model model, Principal principal) {
         log.info("Welcome Page");
-        return "index";
-    }
-*/
-
-    @GetMapping("/available_books")
-    public String home(Model model, HttpSession session){
-        List<Book> allBooks = bookService.getAllBooks();
-        model.addAttribute("books", allBooks);
-
-        String emailId = (String)session.getAttribute("emailId");
+        String emailId= principal.getName();
         if(emailId != null) {
             model.addAttribute("logged", true);
         }
+        return "index";
+    }
+
+
+    @GetMapping("/available_books")
+    public String home(Model model){
+        List<Book> allBooks = bookService.getAllBooks();
+        model.addAttribute("books", allBooks);
+        model.addAttribute("logged", true);
         return "available_books";
     }
 

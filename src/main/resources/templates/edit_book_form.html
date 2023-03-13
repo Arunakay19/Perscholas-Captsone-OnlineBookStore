@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<div th:replace="~{fragments/book_frag.html :: head}"></div>
+
+<body id="page-top">
+<!-- Navigation-->
+<div th:replace="~{fragments/book_frag.html :: nav}"></div>
+<section id="about">
+  <div classname="container my-5 p-5" style="border:1px solid black;">
+    <h4 class="text-center"> Edit Book</h4>
+    <form class="col-md-4 offset-md-4" th:action="@{/save}" method="post"
+          th:object="${book}">
+      <input type="hidden" name="id" th:value="${book.id}">
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" name="title" th:value="${book.title}">
+      </div>
+
+      <div class="mb-3">
+        <label for="authors" class="form-label">Authors</label>
+        <input type="text" class="form-control" name="authors" th:value="${book.authors}">
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" name="price" th:value="${book.price}">
+      </div>
+
+      <center>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </center>
+    </form>
+  </div>
+</section>
+</body>
+</html>
