@@ -21,15 +21,10 @@ public class HomeController {
     BookService bookService;
 
     @GetMapping("/")
-    private String index(Model model, Principal principal) {
+    private String index(Model model) {
         log.info("Welcome Page");
-        String emailId= principal.getName();
-        if(emailId != null) {
-            model.addAttribute("logged", true);
-        }
         return "index";
     }
-
 
     @GetMapping("/available_books")
     public String home(Model model){

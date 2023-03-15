@@ -24,6 +24,7 @@ public class User {
     private Integer id;
     String firstName;
     String lastName;
+
     String password;
     private String email;
     private String roles;

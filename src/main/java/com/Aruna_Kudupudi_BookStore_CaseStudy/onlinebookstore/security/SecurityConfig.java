@@ -44,9 +44,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests().requestMatchers("/",
+                .authorizeHttpRequests().requestMatchers(
+                        "/",
                         "/user_form",
-                        "/user_login",
+//                        "/user_login",
                         "/register_user",
                         "/js/**", "/css/**", "/images/**",
                         "/assets/**"
@@ -72,6 +73,7 @@ public class SecurityConfig {
                         .passwordParameter("password")
                         .loginProcessingUrl("/login_process")
                         .defaultSuccessUrl("/available_books")
+                        .failureForwardUrl("/error_login")
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")

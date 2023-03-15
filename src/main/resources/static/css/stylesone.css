@@ -1,0 +1,44 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+  width: 100%;
+  background-color: rgb(245, 143, 106); 
+}
+.navbar-brand{
+  color: white;
+}
+.nav-link{
+  color: whitesmoke;
+}
+.img-fluid{
+  width: 100%;
+  height: auto;
+
+}
+p {
+  font-size: 20px;
+  line-height: 24px;
+  font-style: italic;
+}
+
+
+
+/*
+.nav-link{
+  color: whitesmoke;
+}
+
+.nav-link{
+  color: rgb(241, 128, 91);
+}{
+
+
+
+.navbar{
+  background-color: coral;
+}
+*/

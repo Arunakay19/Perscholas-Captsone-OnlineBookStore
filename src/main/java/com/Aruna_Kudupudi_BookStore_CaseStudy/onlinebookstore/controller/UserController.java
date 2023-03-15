@@ -41,6 +41,12 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/error_login")
+    public String error_login(Model model){
+        model.addAttribute("error", true);
+        return "login";
+    }
+
     @GetMapping("/admin")
 //    @PreAuthorize("hasAuthority('ADMIN')")
     public String admin_page(Model model,
