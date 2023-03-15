@@ -50,9 +50,6 @@ the early stages of development of my application.
 ![capstone_db.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fcapstone_db.png)
 
 
-
-
-
 <span style="color:blue">**Users Have Following Access for this online store site:-**</span>
 - Create New Account or Register
 - Login
@@ -60,15 +57,9 @@ the early stages of development of my application.
 - Select Books to Buy
 - Add Books to Shopping Cart
 - Remove Books from shopping Cart
-- Select and Update Book Quantity
-- Purchased Books List
-- Transactions Hitory
-- Get Payment Receipt
-- Profile view
-- Profile Update
-- Password Change or update
 - Logout
-
+- 
+![user_books.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2Fuser_books.png)
  
 
 
